@@ -3,6 +3,7 @@ extends MenuButton
 func _ready():
 	var parent_pos = get_parent().get_global_transform().origin # For speed and convenience.
 	self.get_parent().get_global_transform().origin = parent_pos
+	#warning-ignore:return_value_discarded
 	self.get_popup().connect("id_pressed", self, "manage_id")
 
 func manage_id(ID):
