@@ -6,7 +6,7 @@ var time_left = .0 # To know, when to reset the time.
 const BLINK_TIME = 4.0 # For how long to blink.
 const BLINK_SPEED = 2.0 # How quickly to blink.
 
-func _on_WarningLine_text_changed(new_text):
+func _on_WarningLine_text_changed(_new_text):
 	blink_the_message = true
 	time_left = BLINK_TIME
 

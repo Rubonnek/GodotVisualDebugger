@@ -11,7 +11,7 @@ func do_a_step():
 
 var button_is_being_pressed = false # To manage single click.
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_key_pressed(KEY_F9):
 		if !button_is_being_pressed:
 			button_is_being_pressed = true

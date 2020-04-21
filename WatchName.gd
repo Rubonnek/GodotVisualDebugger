@@ -2,7 +2,7 @@ extends TextEdit
 
 var focus_was_outside = true # To only select all the first time.
 
-func _on_WatchName_gui_input(ev):
+func _on_WatchName_gui_input(_ev):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) && focus_was_outside:
 		focus_was_outside = false
 		select_all()

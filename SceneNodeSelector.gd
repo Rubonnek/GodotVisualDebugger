@@ -31,7 +31,7 @@ func manage_customization_params(event):
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			selection_radius = max(selection_radius - selection_radius * SELECTION_RADIUS_CHANGE_COEFFICIENT, MIN_SELECTION_RADIUS_SIZE)
 
-func _process(delta):
+func _process(_delta):
 	absolute_mouse_position = get_viewport().get_mouse_position()
 	relative_mouse_position = VDGlobal.visual_debugger.debugger_camera.position + absolute_mouse_position * VDGlobal.visual_debugger.debugger_camera.zoom
 	update()

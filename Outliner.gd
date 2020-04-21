@@ -123,7 +123,7 @@ func find_widest_and_deepest_branches(current_branch_root_item):
 		if current_branch_root_item == null:
 			break
 
-func _on_Outliner_item_collapsed(item):
+func _on_Outliner_item_collapsed(_item):
 	if !dont_find_the_widest_branch_while_building_the_tree:
 		absolute_widest_branch_width = 0
 		deepest_branch_width = 0
@@ -145,7 +145,7 @@ func find_if_mouse_is_over_outliner():
 	else:
 		return false
 
-func _process(delta):
+func _process(_delta):
 	if find_if_mouse_is_over_outliner():
 		if parent_node.get_child_count() > 1:
 			parent_node.remove_child(selection_overlay)

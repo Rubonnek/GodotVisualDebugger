@@ -57,10 +57,10 @@ var scale_at_mouse_grab = Vector2(.0, .0) # To know, to which side to move the s
 var node_scale_ratio = 1.0 # To preserve the correct ratio of the node scale.
 var concurrent_scale_mask = Vector2(1.0, 1.0) # To always keep correct sign relationships for both axis.
 
-func _process(delta):
+func _process(_delta):
 	update()
 
-func _input(event):
+func _input(_event):
 	if !VDGlobal.visual_debugger.mouse_is_over_visual_debugger_gui:
 		absolute_mouse_position = VDGlobal.visual_debugger.scene_node_selector.absolute_mouse_position
 		var absolute_mouse_position_with_scale = absolute_mouse_position / VDGlobal.visual_debugger.scale # For speed and convenience.
@@ -167,7 +167,7 @@ func rotate_on_axis():
 			else:
 				node.set(transform_getsetters[1], node.get(transform_getsetters[1]) + (old_mouse_position.y - absolute_mouse_position.y) * ROTATION_COEFFICIENT)
 
-func draw_arrow_head(arrow_direction_vector, center_of_the_node, tip_of_the_arrow, line_color, arrow_length, thickness):
+func draw_arrow_head(arrow_direction_vector, tip_of_the_arrow, line_color, arrow_length, thickness):
 	draw_line(tip_of_the_arrow, tip_of_the_arrow + Vector2(arrow_direction_vector.y, -arrow_direction_vector.x) * arrow_length, line_color, thickness, true)
 	draw_line(tip_of_the_arrow, tip_of_the_arrow - Vector2(arrow_direction_vector.y, -arrow_direction_vector.x) * arrow_length, line_color, thickness, true)
 	draw_line(tip_of_the_arrow + arrow_direction_vector * arrow_length, tip_of_the_arrow + \
@@ -236,12 +236,12 @@ func draw_tips_and_axis_characters():
 
 	if VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.MOVE || \
 	   VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.ROTATE:
-		draw_arrow_head(arrow_direction_vector_x, center_of_the_node, x_arrow_tip_position, x_arrow_color, -7.5, 2.0)
-		draw_arrow_head(arrow_direction_vector_y, center_of_the_node, y_arrow_tip_position, y_arrow_color, 7.5, 2.0)
-		draw_arrow_head(arrow_direction_vector_x, center_of_the_node, x_arrow_tip_position, x_arrow_color, -5.0, 2.0)
-		draw_arrow_head(arrow_direction_vector_y, center_of_the_node, y_arrow_tip_position, y_arrow_color, 5.0, 2.0)
-		draw_arrow_head(arrow_direction_vector_x, center_of_the_node, x_arrow_tip_position, x_arrow_color, -2.5, 2.0)
-		draw_arrow_head(arrow_direction_vector_y, center_of_the_node, y_arrow_tip_position, y_arrow_color, 2.5, 2.0)
+		draw_arrow_head(arrow_direction_vector_x, x_arrow_tip_position, x_arrow_color, -7.5, 2.0)
+		draw_arrow_head(arrow_direction_vector_y, y_arrow_tip_position, y_arrow_color, 7.5, 2.0)
+		draw_arrow_head(arrow_direction_vector_x, x_arrow_tip_position, x_arrow_color, -5.0, 2.0)
+		draw_arrow_head(arrow_direction_vector_y, y_arrow_tip_position, y_arrow_color, 5.0, 2.0)
+		draw_arrow_head(arrow_direction_vector_x, x_arrow_tip_position, x_arrow_color, -2.5, 2.0)
+		draw_arrow_head(arrow_direction_vector_y, y_arrow_tip_position, y_arrow_color, 2.5, 2.0)
 	elif VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.SCALE:
 		draw_rect(Rect2(x_arrow_tip_position - scale_tip_rectangle_size * .5, scale_tip_rectangle_size), x_arrow_color, true)
 		draw_rect(Rect2(y_arrow_tip_position - scale_tip_rectangle_size * .5, scale_tip_rectangle_size), y_arrow_color, true)

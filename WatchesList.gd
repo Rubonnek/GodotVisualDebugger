@@ -308,7 +308,7 @@ func update_watches():
 		else:
 			select(item_count - 1)
 
-func _process(delta):
+func _process(_delta):
 	if !get_tree().paused || previous_h_scroll_value != h_scroll_value:
 		update_watches()
 

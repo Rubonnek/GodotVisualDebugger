@@ -15,7 +15,7 @@ func find_vertical_scroll_bar():
 		if outliner_children[i].get_class() == "VScrollBar":
 			return outliner_children[i]
 
-func _process(delta):
+func _process(_delta):
 	the_vertical_scroll_bar.rect_position.x = outliner_container.rect_size.x + RIGHT_OFFSET_FOR_V_SCROLL_BAR + value
 	if outliner.absolute_widest_branch_width > branch_width_threshold:
 		visible = true

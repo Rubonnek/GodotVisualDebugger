@@ -80,9 +80,9 @@ func manage_camera_movement(speed):
 	if direction.length() > VDGlobal.APPROXIMATION_FLOAT:
 		is_moving_to_node = false
 
-func set_moving_to_node(state, relative_position):
+func set_moving_to_node(state, new_relative_position):
 	is_moving_to_node = state
-	self.relative_position = relative_position
+	self.relative_position = new_relative_position
 
 func move_to_the_node(delta):
 	var movement_speed = delta * camera_move_lerp_speed # To save resources.
