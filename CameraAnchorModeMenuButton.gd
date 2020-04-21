@@ -1,6 +1,7 @@
 extends MenuButton
 
 func _ready():
+	#warning-ignore:return_value_discarded
 	self.get_popup().connect("id_pressed", self, "manage_id")
 	if VDGlobal.visual_debugger.debugger_camera:
 		self.text = str(VDGlobal.visual_debugger.debugger_camera.anchor_mode)
