@@ -28,7 +28,7 @@ func load_textures(var dir_path):
 	var file_name = dir.get_next()
 
 	while file_name != "":
-		if !dir.current_is_dir():
+		if !dir.current_is_dir() and file_name.ends_with(".svg"):
 			icon_dictionary[file_name.replace("icon_", "").replace(".svg", "").replace("_", "")] = load(dir_path + "/" + file_name)
 		file_name = dir.get_next()
 
