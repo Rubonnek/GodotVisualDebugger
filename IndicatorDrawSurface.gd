@@ -350,16 +350,18 @@ func check_for_transform_property(passed_properties):
 	return is_property_found
 
 func _draw():
-	node = get_node(VDGlobal.visual_debugger.full_selected_path)
-	if node != null:
-		if node.has_method("get_global_transform") && check_for_transform_property(["scale", "rect_scale"]):
-			manage_this_node = true
-		else:
-			manage_this_node = false
-			return
-		if VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.MOVE:
-			draw_local_axis_handles()
-		elif VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.ROTATE:
-			draw_rotation_circle()
-		elif VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.SCALE:
-			draw_local_axis_handles()
+	var selected_node_path = VDGlobal.visual_debugger.full_selected_path
+	if selected_node_path != "":
+		node = get_node(selected_node_path)
+		if node != null:
+			if node.has_method("get_global_transform") && check_for_transform_property(["scale", "rect_scale"]):
+				manage_this_node = true
+			else:
+				manage_this_node = false
+				return
+			if VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.MOVE:
+				draw_local_axis_handles()
+			elif VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.ROTATE:
+				draw_rotation_circle()
+			elif VDGlobal.visual_debugger.transformation_mode == VDGlobal.visual_debugger.VD_Transformation_modes.SCALE:
+				draw_local_axis_handles()
