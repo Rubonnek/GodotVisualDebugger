@@ -1,26 +1,19 @@
 extends Node
 
-const FULL_CIRCLE_IN_DEGREES = 360.0 # To avoid having magic numbers.
-const TO_SECONDS_MULTIPLIER = 1000 # To avoid having magic numbers.
-const APPROXIMATION_FLOAT = .000001 # To avoid having magic numbers.
-const NORMALIZED_UPPER_BOUND = 1.0 - APPROXIMATION_FLOAT # For speed and convenience.
-const POSITIVEINFINITY = 3.402823e+38 # For convenience.
-const NEGATIVEINFINITY = -2.802597e-45 # For convenience.
-const Z_INDEX_OVER_MENU = 666 # To avoid having magic numbers.
-const CANVAS_LAYER_ID = 127 # To avoid having magic numbers.
+const FULL_CIRCLE_IN_DEGREES : float = 360.0 # To avoid having magic numbers.
+const TO_SECONDS_MULTIPLIER : int = 1000 # To avoid having magic numbers.
+const APPROXIMATION_FLOAT : float = .000001 # To avoid having magic numbers.
+const NORMALIZED_UPPER_BOUND : float = 1.0 - APPROXIMATION_FLOAT # For speed and convenience.
+const POSITIVEINFINITY : float = 3.402823e+38 # For convenience.
+const NEGATIVEINFINITY : float = -2.802597e-45 # For convenience.
+const CANVAS_LAYER_ID : int = 127 # To avoid having magic numbers.
 
-onready var visual_debugger_z_index_node2D = Node2D.new() # To be able to set the z_index.
-onready var cached_root = get_tree().get_root() # For speed and convenience.
-var visual_debugger = null # instance -- currently needed so that other GUI components can find it
+onready var cached_root : Node = get_tree().get_root() # For speed and convenience.
+var visual_debugger : CanvasLayer = preload("./VisualDebugger.tscn").instance() # To have persistent visual game debugger.
 
 func _ready():
-	var visual_debugger_scene = preload("./VisualDebugger.tscn")
-	visual_debugger = visual_debugger_scene.instance()
-	add_child(visual_debugger_z_index_node2D)
-	visual_debugger_z_index_node2D.name = "VisualDebuggerZIndex"
-	visual_debugger_z_index_node2D.z_index = Z_INDEX_OVER_MENU
-	visual_debugger.layer = CANVAS_LAYER_ID
-	visual_debugger_z_index_node2D.add_child(visual_debugger)
+	visual_debugger.set_layer(CANVAS_LAYER_ID)
+	add_child(visual_debugger)
 
 func lerp_array(from_array, to_array, speed):
 	for i in range(0, from_array.size()):
