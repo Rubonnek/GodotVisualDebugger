@@ -33,7 +33,7 @@ func load_textures(var dir_path):
 		file_name = dir.get_next()
 
 func _ready():
-	load_textures("res://VisualDebugger/icons/")
+	load_textures(get_script().resource_path.get_base_dir() + "/icons")
 	VDGlobal.visual_debugger.outliner = self
 	form_the_whole_outliner()
 

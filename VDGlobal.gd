@@ -9,13 +9,12 @@ const NEGATIVEINFINITY = -2.802597e-45 # For convenience.
 const Z_INDEX_OVER_MENU = 666 # To avoid having magic numbers.
 const CANVAS_LAYER_ID = 127 # To avoid having magic numbers.
 
-var visual_debugger_scene = preload("res://VisualDebugger/VisualDebugger.tscn") # To have persistent visual game debugger.
-var visual_debugger = null # Instanced visual debugger.
-
 onready var visual_debugger_z_index_node2D = Node2D.new() # To be able to set the z_index.
 onready var cached_root = get_tree().get_root() # For speed and convenience.
+var visual_debugger = null # instance -- currently needed so that other GUI components can find it
 
 func _ready():
+	var visual_debugger_scene = preload("./VisualDebugger.tscn")
 	visual_debugger = visual_debugger_scene.instance()
 	add_child(visual_debugger_z_index_node2D)
 	visual_debugger_z_index_node2D.name = "VisualDebuggerZIndex"
