@@ -85,7 +85,7 @@ func form_the_whole_outliner():
 		fill_previous_tree_dictionary(get_root())
 	clear()
 	dont_find_the_widest_branch_while_building_the_tree = true
-	get_all_outline_nodes(VDGlobal.cached_root, null)
+	get_all_outline_nodes(get_tree().get_root(), null)
 	dont_find_the_widest_branch_while_building_the_tree = false
 	_on_Outliner_item_collapsed(null)
 

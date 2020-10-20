@@ -8,7 +8,6 @@ const POSITIVEINFINITY : float = 3.402823e+38 # For convenience.
 const NEGATIVEINFINITY : float = -2.802597e-45 # For convenience.
 const CANVAS_LAYER_ID : int = 127 # To avoid having magic numbers.
 
-onready var cached_root : Node = get_tree().get_root() # For speed and convenience.
 var visual_debugger : CanvasLayer = preload("./VisualDebugger.tscn").instance() # To have persistent visual game debugger.
 
 func _ready():

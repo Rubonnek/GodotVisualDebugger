@@ -48,7 +48,7 @@ func manage_selection():
 				selection_info.text = ""
 				full_paths = []
 				if VDGlobal.visual_debugger.game_camera:
-					get_all_nodes(VDGlobal.cached_root)
+					get_all_nodes(get_tree().get_root())
 				selection_info.text = selection_info.text.substr(1, selection_info.text.length() - 1)
 	else:
 		is_left_mouse_button_being_pressed = false
